@@ -1,0 +1,14 @@
+*
+!.gitignore
+
+!.zshrc
+!.bashrc
+!.bash-profile
+
+!.vimrc
+
+!.rvmrc
+
+!.gitconfig
+!.git-stats
+
