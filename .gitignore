@@ -4,6 +4,7 @@
 !.zshrc
 !.bashrc
 !.bash-profile
+!.bash_aliases
 
 !.vimrc
 
@@ -11,4 +12,5 @@
 
 !.gitconfig
 !.git-stats
+!.git-prompt.sh
 
