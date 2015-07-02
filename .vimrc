@@ -15,7 +15,7 @@
           call vam#ActivateAddons(['vim-twig','vim-stylus'], {'auto_install' : 0})
           " Also See "plugins-per-line" below
         endfun
-        call SetupVAM()
+        " call SetupVAM()
 
 let g:mustang_termcolors=256
 colorscheme mustang
