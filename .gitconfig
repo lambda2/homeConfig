@@ -1,0 +1,8 @@
+[user]
+	name = Andre Aubin
+	email = andre@orga.42.fr
+[push]
+	default = simple
+[alias]
+	poule = pull
+	pool = pull
