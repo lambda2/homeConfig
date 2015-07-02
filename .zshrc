@@ -52,9 +52,6 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/usr/lib64/qt-3.3/bin:/Users/andral/Library/Python/2.7/bin:/usr/local/bin:/home/lambda2/scripts:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/home/lambda2/Android/adt/sdk:/home/lambda2/Android/adt/sdk/tools:/home/lambda2/Android/adt/sdk/platform-tools:/home/lambda2/.local/bin:/home/lambda2/bin:/home/lambda2/Android/adt/sdk:/home/lambda2/Android/adt/sdk/tools:/home/lambda2/Android/adt/sdk/platform-tools
 
 
-export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk
-PATH=$PATH:$HOME/Android/adt/sdk:$HOME/Android/adt/sdk/tools 
-PATH=$PATH:$HOME/Android/adt/sdk/platform-tools
 export PATH
 
 source ~/.git-prompt.sh
@@ -75,22 +72,5 @@ alias gsf="git submodule foreach"
 
 # ------- Gcc shortcuts
 
-alias cm="gcc -Wall -Wextra -Werror -o bin "
-
-
-alias www="cd /var/www/html"
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-function fu(){
-	curl -k -H "Content-Type: application/json" "https://dashboard.42.fr/crawler/pull/$1/" | grep ".......42.fr" || echo "User not found"
-}
-export PATH="$(brew --prefix homebrew/php/php56)/sbin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-PHP_AUTOCONF="/usr/local/bin/autoconf"
-
-export WORKON_HOME=~/.virtualenvs
-mkdir -p $WORKON_HOME
-source /Users/andral/Library/Python/2.7/bin/virtualenvwrapper.sh
-
 source ~/.bash_aliases
