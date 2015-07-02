@@ -17,5 +17,5 @@
         endfun
         " call SetupVAM()
 
-let g:mustang_termcolors=256
-colorscheme mustang
+"let g:mustang_termcolors=256
+"colorscheme mustang
