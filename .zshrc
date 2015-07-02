@@ -74,3 +74,5 @@ alias gsf="git submodule foreach"
 
 export PATH="/usr/local/sbin:$PATH"
 source ~/.bash_aliases
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
