@@ -49,7 +49,7 @@ function test_repo {
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$PATH:/usr/lib64/qt-3.3/bin:/Users/andral/Library/Python/2.7/bin:/usr/local/bin:/home/lambda2/scripts:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/home/lambda2/Android/adt/sdk:/home/lambda2/Android/adt/sdk/tools:/home/lambda2/Android/adt/sdk/platform-tools:/home/lambda2/.local/bin:/home/lambda2/bin:/home/lambda2/Android/adt/sdk:/home/lambda2/Android/adt/sdk/tools:/home/lambda2/Android/adt/sdk/platform-tools
+export PATH=$PATH:/usr/lib64/qt-3.3/bin:/Users/andral/Library/Python/2.7/bin:/usr/local/bin:/home/lambda2/scripts:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/Users/andral/android-sdk:/Users/andral/android-sdk/tools
 
 
 export PATH
@@ -76,3 +76,8 @@ export PATH="/usr/local/sbin:$PATH"
 source ~/.bash_aliases
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+echo "Fuuuuuuuu 💫"
+
+PHP_AUTOCONF="/usr/local/bin/autoconf"
+source ~/.bash_aliases
