@@ -30,7 +30,7 @@ ZSH_THEME="ys"
 # DISABLE_CORRECTION="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment following line if you want to disable marking untracked files under
 # VCS as dirty. This makes repository status check for large repositories much,
@@ -48,8 +48,11 @@ function test_repo {
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-export PATH=$PATH:/usr/lib64/qt-3.3/bin:/Users/andral/Library/Python/2.7/bin:/usr/local/bin:/home/lambda2/scripts:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/Users/andral/android-sdk:/Users/andral/android-sdk/tools
+# Customize to your needs...      
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
+export PATH=$PATH:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/Users/andral/android-sdk:/Users/andral/android-sdk/tools
 
 
 export PATH
@@ -70,6 +73,16 @@ alias ga="git add"
 alias gl="git log --graph"
 alias gsf="git submodule foreach"
 
+# ------- Intra shortcuts
+
+alias bu="bundle"
+alias buf="bu update ft_core"
+alias bufu="bu && buf"
+alias buco="bufu && git add Gemfile.lock && git commit -m 'bundle'; ggpnp"
+alias mes="buco && bundle exec cap staging deploy"
+alias mep="buco && bundle exec cap production deploy"
+alias api-monitor="multitail -l 'ssh deployer@intra-worker3 -p 4222 \"tail -f /home/deployer/intra/api/current/log/actions.log\"' -l 'ssh deployer@intra-worker2 -p 4222 \"tail -f /home/deployer/intra/api/current/log/actions.log\"' -l 'ssh deployer@intra-worker1 -p 4222 \"tail -f /home/deployer/intra/api/current/log/actions.log\"'"
+
 # ------- Gcc shortcuts
 
 export PATH="/usr/local/sbin:$PATH"
@@ -81,3 +94,7 @@ echo "Fuuuuuuuu 💫"
 
 PHP_AUTOCONF="/usr/local/bin/autoconf"
 source ~/.bash_aliases
+
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
