@@ -78,9 +78,10 @@ alias gsf="git submodule foreach"
 alias bu="bundle"
 alias buf="bu update ft_core"
 alias bufu="bu && buf"
-alias buco="bufu && git add Gemfile.lock && git commit -m 'bundle'; ggpnp"
-alias mes="buco && bundle exec cap staging deploy"
-alias mep="buco && bundle exec cap production deploy"
+alias bucop="bufu && git add Gemfile.lock && git commit -m 'bundle'; ggpnp"
+alias buco="bufu && git add Gemfile.lock && git commit -m 'bundle'"
+alias mes="buco && git tag \"staging-🚀 -$(date '+%Y%m%d%H%M%S')\" && ggpush --tags"
+alias mep="buco && git tag \"prod-🚀 -$(date '+%Y%m%d%H%M%S')\" && ggpush --tags"
 alias api-monitor="multitail -l 'ssh deployer@intra-worker3 -p 4222 \"tail -f /home/deployer/intra/api/current/log/actions.log\"' -l 'ssh deployer@intra-worker2 -p 4222 \"tail -f /home/deployer/intra/api/current/log/actions.log\"' -l 'ssh deployer@intra-worker1 -p 4222 \"tail -f /home/deployer/intra/api/current/log/actions.log\"'"
 
 # ------- Gcc shortcuts
