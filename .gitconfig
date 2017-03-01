@@ -1,6 +1,7 @@
 [user]
 	name = Andre Aubin
-	email = andre@orga.42.fr
+	email = andre@andral.kiwi
+	signingkey = B154C3645DF49759
 [push]
 	default = simple
 [alias]
@@ -10,3 +11,7 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[commit]
+	gpgsign = false
+[pull]
+	default = current

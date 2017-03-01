@@ -40,7 +40,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(rails git bundler osx rake ruby brew capistrano cp git-extras gem github npm rvm redis-cli screen gpg-agent)
 
 function test_repo {
 (git log | head -1 | cut -d' ' -f2 | grep `git ls-remote origin HEAD | cut -c-41` && echo 'Up to date') || printf '\33[031mNot up to date\33[037m\n';
@@ -53,7 +53,6 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
 export PATH=$PATH:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/Users/andral/android-sdk:/Users/andral/android-sdk/tools
-
 
 export PATH
 
@@ -76,7 +75,7 @@ alias gsf="git submodule foreach"
 # ------- Intra shortcuts
 
 alias bu="bundle"
-alias buf="bu update ft_core"
+alias buf="bu update panda_core"
 alias bufu="bu && buf"
 alias bucop="bufu && git add Gemfile.lock && git commit -m 'bundle'; ggpnp"
 alias buco="bufu && git add Gemfile.lock && git commit -m 'bundle'"
@@ -89,13 +88,40 @@ alias api-monitor="multitail -l 'ssh deployer@intra-worker3 -p 4222 \"tail -f /h
 export PATH="/usr/local/sbin:$PATH"
 source ~/.bash_aliases
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
 echo "Fuuuuuuuu 💫"
 
 PHP_AUTOCONF="/usr/local/bin/autoconf"
 source ~/.bash_aliases
 
-
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
+
+# docker
+eval `docker-machine env 2>/dev/null`
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+
+# kill -0 checks to see if the pid exists
+export GPG_TTY=`tty`
+export GOPATH=$HOME/Dev
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /Users/andral/google-cloud-sdk/path.zsh.inc ]; then
+  source '/Users/andral/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/andral/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/Users/andral/google-cloud-sdk/completion.zsh.inc'
+fi
+
+export KUBECONFIG=$KUBECONFIG:~/.kube/config:~/.kube/prod-config
+alias kud="kubectl get deploy -o json | jq -r '.items | .[] | {name: .metadata.name, image: .spec.template.spec.containers[0].image, replicas: .spec.replicas}'"
+alias kup="kubectl get pods"
+alias kus="kubectl get services"
+alias kun="kubectl get nodes"
+alias kupa="kubectl get pods --all-namespaces"
+PATH=$PATH:~/.local/bin
+export PATH="$PATH:`yarn global bin`"
+nvm use stable
