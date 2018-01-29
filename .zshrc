@@ -40,7 +40,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(rails git bundler osx rake ruby brew capistrano cp git-extras gem github npm rvm redis-cli screen gpg-agent)
+plugins=(colorize web-search rails git bundler osx rake ruby brew capistrano cp git-extras gem github npm rvm redis-cli screen gpg-agent)
 
 function test_repo {
 (git log | head -1 | cut -d' ' -f2 | grep `git ls-remote origin HEAD | cut -c-41` && echo 'Up to date') || printf '\33[031mNot up to date\33[037m\n';
@@ -83,6 +83,11 @@ alias mes="buco && git tag \"staging-🚀 -$(date '+%Y%m%d%H%M%S')\" && ggpush -
 alias mep="buco && git tag \"prod-🚀 -$(date '+%Y%m%d%H%M%S')\" && ggpush --tags"
 alias api-monitor="multitail -l 'ssh deployer@intra-worker3 -p 4222 \"tail -f /home/deployer/intra/api/current/log/actions.log\"' -l 'ssh deployer@intra-worker2 -p 4222 \"tail -f /home/deployer/intra/api/current/log/actions.log\"' -l 'ssh deployer@intra-worker1 -p 4222 \"tail -f /home/deployer/intra/api/current/log/actions.log\"'"
 
+
+alias pcat="colorize"
+
+#
+#
 # ------- Gcc shortcuts
 
 export PATH="/usr/local/sbin:$PATH"
@@ -117,11 +122,24 @@ if [ -f /Users/andral/google-cloud-sdk/completion.zsh.inc ]; then
 fi
 
 export KUBECONFIG=$KUBECONFIG:~/.kube/config:~/.kube/prod-config
+source <(kubectl completion zsh)
 alias kud="kubectl get deploy -o json | jq -r '.items | .[] | {name: .metadata.name, image: .spec.template.spec.containers[0].image, replicas: .spec.replicas}'"
 alias kup="kubectl get pods"
 alias kus="kubectl get services"
 alias kun="kubectl get nodes"
 alias kupa="kubectl get pods --all-namespaces"
 PATH=$PATH:~/.local/bin
-export PATH="$PATH:`yarn global bin`"
+# export PATH="$PATH:`yarn global bin`"
+export PATH="$HOME/.yarn/bin:$PATH"
 nvm use stable
+
+export PATH=$PATH:/Users/andral/bin
+
+source '/Users/andral/lib/azure-cli/az.completion'
+
+export GITLAB_API_ENDPOINT=https://git.pandascore.co/api/v4
+export GITLAB_API_PRIVATE_TOKEN=dbAYuoshNFPZJtrgWcHZ
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
